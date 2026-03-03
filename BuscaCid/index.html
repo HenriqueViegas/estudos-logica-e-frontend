@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="buscaCid">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Busca CID</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="./app/lib/angular.min.js"></script>
+    <script src="./app/app.js"></script>
+    <script data-ad-client="ca-pub-2814298103179483" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	</head>
+	<body>
+    <header>
+      <nav class="navbar navbar-light bg-secondary">
+      <img src="./img/logo.png" alt="busca cid" id="brand">
+      </nav>
+    </header>
+
+      <main ng-controller='BuscaCidController'>
+        <p id="descricao">CID-10 é o código internacional de doenças desenvolvida em 1993 para registrar as estatísticas de mortalidade.
+        <br>O site compilou as classificações para facilitar a busca pelos profissionais da saúde.
+        </p>
+          <div class="flex-container">
+              <div class="w-50">
+                  <input id="busca" ng-model="busca" type="text" class="form-control" placeholder="Busque por qualquer trecho ou código do CID">
+              </div>
+          </div>
+
+            <table class="table-hover table-responsive">
+              <thead>
+                <tr class="table-success">
+                  <td class="text-center">Codigo</td> 
+                  <td class="text-center">Nome</td>
+                </tr>
+              </thead>
+                  <tbody id="tabelaCid" ng-repeat="cid in arrayJson | filter:busca | orderBy:'codigo'" ng-show='busca'>
+                    <td>{{cid.codigo}}</td>
+                    <td>{{cid.nome}}</td>
+                  </tbody>
+            </table>
+
+      </main>
+
+      <nav class="navbar navbar-light bg-secondary" id="rodape">
+        <p class="text-white">Copyright © 2020 | Henrique Viegas</p>
+        <a id="site" class="text-white" href="https://www.buscacid.com.br">https://www.buscacid.com.br</a>
+      </nav>
+
+    </body>
+</html>
